@@ -14,7 +14,8 @@ with open('config.json') as config_file:
 
 firebase = pyrebase.initialize_app(config)
 
-# db = firebase.database()
+db = firebase.database()
+weights = db.child("sites").get()
 # db.child("users").child("Tarek")
 # data = {"name": "Mortimer 'Tarek' Ullah"}
 # db.child("users").push(data)
