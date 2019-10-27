@@ -6,5 +6,5 @@
     "messagingSenderId": "143332648725",
     "appId": "1:143332648725:web:6e3e5ded439cd4960dab1c",
     "measurementId": "G-PDED3R3JE4",
-    "serviceAccount": "/Users/llmsa/Git/HackGT19/serviceAccountCredentials.json"
+    "serviceAccount": "serviceAccountCredentials.json"
 }
