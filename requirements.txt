@@ -1,0 +1,2 @@
+Google-Search-API==1.1.14
+google-search-results==1.5.4
