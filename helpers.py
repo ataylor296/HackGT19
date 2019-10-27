@@ -112,7 +112,7 @@ def get_search_results(title):
 def get_reliability_score(weight, related_weights):
     count = len(related_weights)
     average_weight = sum(sorted(related_weights, reverse=True)[:min(10, count)])/float(min(10, count))
-    return weight*0.5+average_weight*0.35+min(count, 100)*0.15
+    return int(weight*0.5+average_weight*0.35+min(count, 100)*0.15)
 
 def evaluate(url, weight_dict):
     weight = get_weight(url, weight_dict)
