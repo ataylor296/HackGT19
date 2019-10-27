@@ -71,7 +71,7 @@ def get_weight(url, weight_dict):
     #get domain title
     source_title = get_title(get_domain(url))
     if not source_title:
-        return 70
+        return 60
     #look for the right key by getting key with min levenshtein distance
     # min_distance = float('inf')
     # closest_match = None
@@ -98,21 +98,28 @@ def get_weight(url, weight_dict):
 
     #print(source_title, closest_match, max_common_substring)
     if closest_match == None or max_common_substring < 3:
-        return 70
+        return 60
     else:
         return weight_dict[closest_match]['weight']
 
 def get_search_results(title):
+    if not title:
+        return []
     results = []
-    for url in search('title', stop=30):
+    title = ''.join([c for c in title if c.isalpha() or c == " "])
+    for url in search(title, stop=30):
         #print(url)
         results.append(url)
+    #print(results)
     return results
 
 def get_reliability_score(weight, related_weights):
     count = len(related_weights)
-    average_weight = sum(sorted(related_weights, reverse=True)[:min(10, count)])/float(min(10, count))
-    return int(weight*0.5+average_weight*0.35+min(count, 100)*0.15)
+    if not related_weights:
+        average_weight = 50
+    else:
+        average_weight = sum(sorted(related_weights, reverse=True)[:min(10, count)])/float(min(10, count))
+    return int(weight*0.60+average_weight*0.30+(min(count, 100))/30.0*10)
 
 def evaluate(url, weight_dict):
     weight = get_weight(url, weight_dict)
