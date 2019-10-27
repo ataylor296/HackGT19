@@ -4,9 +4,11 @@ fake-useragent==0.1.11
 Flask==1.1.1
 future==0.18.1
 gcloud==0.17.0
+google==2.0.2
 Google-Search-API==1.1.14
 google-search-results==1.5.4
 googleapis-common-protos==1.6.0
+gunicorn==19.9.0
 httplib2==0.14.0
 idna==2.8
 itsdangerous==1.1.0
