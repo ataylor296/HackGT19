@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}"> -->
+        <link rel="stylesheet" href="../static/home.css">
+        <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
+        <title>Fake News Checker</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h2 position="center">
+                <i class="far fa-newspaper"></i>                
+                NewsChecker
+            </h2>
+        </div>
+
+        <div class="body-page">
+            <div class="expo-text">
+                <div class="expo-header">News Reliability Checker</div>
+                <div class="expo-body">Enter a link below to check the reliability of an article that you read, or are about to read.</div>
+            </div>
+
+            <div class="search-box">
+                <input class="search-txt" type="text" name="" placeholder="Enter a link to an article here...">
+                <a class="search-btn" href="#">
+                </a>
+                <button id=search-btn>Search
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="result-modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>"From Simple Exchange to Revelation: Evolution of Quid Pro Quo"</h2>
+                <p class="regular">Link: https://www.npr.org/2019/10/26/773506497/from-simple-exchange-to-shakedown-the-evolution-of-quid-pro-quo</p>
+
+                <div class="row">
+                    <div class="column">
+                        <p class="regular">Reliability Score: </p>
+                        <div class="r-score">
+                            89/100
+                        </div>
+                        <div class="rating">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="result-notes">
+                            <p>This article was given this reliability score for the following reasons: </p>
+                            <p class="bullets">This publisher is a well-known, established source</p>
+                            <p class="bullets">This headline, or the contents of this article have come up often in search results</p>
+                            <p>Note: This score is based on a formula created for the purposes of this application. Take it with a grain of salt!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+        // Get the modal
+        var modal = document.getElementById("result-modal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("search-btn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        </script>
+
+    </body>
+</html>
+
