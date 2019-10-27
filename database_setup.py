@@ -1,3 +1,13 @@
+import pyrebase
+import json
+
+with open('config.json') as config_file:
+    config = json.load(config_file)
+
+firebase = pyrebase.initialize_app(config)
+
+db = firebase.database()
+
 import csv
 with open('Reliable News Sources.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
