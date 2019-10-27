@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset = "utf-8">
-        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}"> -->
-        <link rel="stylesheet" href="../static/home.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+        <!-- <link rel="stylesheet" href="../static/home.css"> -->
         <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
         <title>Fake News Checker</title>
     </head>
@@ -45,7 +45,7 @@
                     <div class="column">
                         <p class="regular">Reliability Score: </p>
                         <div class="r-score">
-                            89/100
+                            {{ score }}/100
                         </div>
                         <div class="rating">
                             <span class="fa fa-star checked"></span>

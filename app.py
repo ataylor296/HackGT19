@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import pyrebase
 import json
 import helpers
@@ -14,8 +14,11 @@ db = firebase.database()
 
 weights = db.child("sources").get().val()
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+@app.route("/", methods=['POST'])
+def home():
+    return render_template("home.html", score = 0)
 
-
+@app.route("/<link>/result", methods=['GET'])
+def result_modal(link):
+    title, score = helpers.evaluate(link, weights)
+    return render_template("home.html", score = score)
