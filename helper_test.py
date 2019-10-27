@@ -22,4 +22,9 @@ test_news = ["https://www.nydailynews.com/news/politics/ny-trump-first-pitch-was
             "https://fox2now.com/2019/10/26/belleville-apartment-fire-caused-by-unattended-candle/"]
 
 for s in test_news:
-    print(helpers.get_weight(s, weights))
+    title, score = helpers.evaluate(s, weights)
+    if title:
+        print("Title: ", title)
+    else:
+        print("Title: Unknown")
+    print(score)

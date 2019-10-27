@@ -1,6 +1,7 @@
 import urllib.request
 from urllib.parse import urlparse
 import numpy as np
+from googlesearch import search
 
 def levenshtein(seq1, seq2):
     size_x = len(seq1) + 1
@@ -70,7 +71,7 @@ def get_weight(url, weight_dict):
     #get domain title
     source_title = get_title(get_domain(url))
     if not source_title:
-        return 0.7
+        return 70
     #look for the right key by getting key with min levenshtein distance
     # min_distance = float('inf')
     # closest_match = None
@@ -97,11 +98,23 @@ def get_weight(url, weight_dict):
 
     #print(source_title, closest_match, max_common_substring)
     if closest_match == None or max_common_substring < 3:
-        return 0.7
+        return 70
     else:
         return weight_dict[closest_match]['weight']
 
+def get_search_results(title):
+    results = []
+    for url in search('title', stop=30):
+        #print(url)
+        results.append(url)
+    return results
+
 def get_reliability_score(weight, related_weights):
     count = len(related_weights)
-    average_weight = sorted(related_weights, reverse=True)[:min(10, count)]/float(min(10, count))
+    average_weight = sum(sorted(related_weights, reverse=True)[:min(10, count)])/float(min(10, count))
     return weight*0.5+average_weight*0.35+min(count, 100)*0.15
+
+def evaluate(url, weight_dict):
+    weight = get_weight(url, weight_dict)
+    related_weights = [get_weight(u, weight_dict) for u in get_search_results(get_title(url))]
+    return get_title(url), get_reliability_score(weight, related_weights)
