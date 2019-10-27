@@ -23,6 +23,8 @@ def home_modal():
     if request.method == 'POST':
         data = request.form['url']
         title, score = helpers.evaluate(data, weights)
-        print(title, score)
+        #print(title, score)
         return render_template("home_modal.html", title = title, url = data, score = score)
     return render_template("home_modal.html", title = "", url = "", score = 0)
+
+app.run()
