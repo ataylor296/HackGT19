@@ -1,0 +1,23 @@
+{
+  "name": "HackGT19",
+  "version": "1.0.0",
+  "description": "Create a virtual environment   ``` python3 -m venv venv ``` Activate a virtual environment   ``` source venv/bin/activate ``` Install all dependencies   ``` pip install -r requirements.txt ``` Firebase CLI for deployment   ``` sudo npm install -g firebase-tools ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ataylor296/HackGT19.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ataylor296/HackGT19/issues"
+  },
+  "homepage": "https://github.com/ataylor296/HackGT19#readme",
+  "devDependencies": {
+    "firebase-tools": "^7.6.1"
+  }
+}
