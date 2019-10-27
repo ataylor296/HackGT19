@@ -119,7 +119,7 @@ def get_reliability_score(weight, related_weights):
         average_weight = 50
     else:
         average_weight = sum(sorted(related_weights, reverse=True)[:min(10, count)])/float(min(10, count))
-    return int(weight*0.60+average_weight*0.30+(min(count, 100))/30.0*10)
+    return int(weight*0.55+average_weight*0.35+(min(count, 100))/30.0*10)
 
 def evaluate(url, weight_dict):
     weight = get_weight(url, weight_dict)
