@@ -6,13 +6,13 @@ def levenshtein(seq1, seq2):
     size_x = len(seq1) + 1
     size_y = len(seq2) + 1
     matrix = np.zeros ((size_x, size_y))
-    for x in xrange(size_x):
+    for x in range(size_x):
         matrix [x, 0] = x
-    for y in xrange(size_y):
+    for y in range(size_y):
         matrix [0, y] = y
 
-    for x in xrange(1, size_x):
-        for y in xrange(1, size_y):
+    for x in range(1, size_x):
+        for y in range(1, size_y):
             if seq1[x-1] == seq2[y-1]:
                 matrix [x,y] = min(
                     matrix[x-1, y] + 1,
@@ -25,7 +25,7 @@ def levenshtein(seq1, seq2):
                     matrix[x-1,y-1] + 1,
                     matrix[x,y-1] + 1
                 )
-    print (matrix)
+    #print (matrix)
     return (matrix[size_x - 1, size_y - 1])
 
 #example: get_title("https://www.nydailynews.com/news/politics/ny-trump-first-pitch-washington-nationals-world-series-20191026-o5rnjkq3trhfnpenpvah4fadtm-story.html?fbclid=IwAR1Bz7xj629rTFw8p5AaKLYSrG6SvLaAZwBNC4vTdMJ0vCyVDzawh7rCnG0")
@@ -49,15 +49,15 @@ def get_weight(url, weight_dict):
     min_distance = float('inf')
     closest_match = None
     for k in weight_dict.keys():
-        temp_distance = levenshtein(source_title, k)/float(max(length(source_title), length(k)))
+        temp_distance = levenshtein(source_title, k)/float(max(len(source_title), len(k)))
         if temp_distance <= min_distance:
             closest_match = k
             min_distance = temp_distance
     
-    if closest_match == None or min_distance > 0.7:
+    if closest_match == None or min_distance > 0.90:
         return 0.7
     else:
-        return weight[closest_match]
+        return weight_dict[closest_match]['weight']
 
 def get_reliability_score(weight, related_weights):
     count = len(related_weights)
